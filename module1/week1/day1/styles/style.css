@@ -1,0 +1,18 @@
+h1,
+h2 {
+  color: rgb(164, 142, 142);
+}
+body {
+  background-color: blue;
+}
+
+#hello {
+  color: rgb(241, 5, 162);
+}
+.goodbye2 {
+  color: rgb(131, 197, 255);
+}
+.goodbye {
+  color: rgb(255, 187, 0);
+}
+/* this is a comment is css */
