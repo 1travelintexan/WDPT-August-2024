@@ -24,5 +24,8 @@ data.shift();
 console.log("after the shift", data);
 //removing elements or just one from anywhere in the array data
 //.splice needs at least two arguments with an optional third
+//first argument is the starting index
+//second argument is the delete
+//anything after the second argument gets added to the array :)
 data.splice(3, 0, "hello Teresa");
 console.log("after the splice", data);
