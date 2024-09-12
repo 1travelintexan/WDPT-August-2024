@@ -52,7 +52,7 @@ for (i = 1; i <= 10; i++) {
 
 //for loop in reverse
 for (i = 99; i >= 0; i -= 1) {
-  console.log("Here is the reverse i: ", i);
+  //   console.log("Here is the reverse i: ", i);
 }
 
 //****************FIZZ BUZZ CHALLENGE ***************/
@@ -61,3 +61,28 @@ for (i = 99; i >= 0; i -= 1) {
 //if the iteration number is ONLY divisible by 5 .... then you console.log('BUZZ')
 //if the iteration number is divisible by 3 and by 5 .... then you console.log('FIZZ BUZZ')
 //Otherwise you just log the iteration number
+
+// for (i = 1; i <= 50; i++) {
+//   if (i % 3 === 0 && i % 5 === 0) {
+//     console.log("FIZZ BUZZ");
+//   } else if (i % 3 === 0) {
+//     console.log("FIZZ");
+//   } else if (i % 5 === 0) {
+//     console.log("BUZZ");
+//   } else {
+//     console.log(i);
+//   }
+// }
+//*****************While loop ***************/
+let counter = 11;
+while (counter <= 10) {
+  console.log("inside the while loop", counter);
+  //   always remember to increment whatever you are checking for the while
+  counter++;
+}
+//************do while loop ****************/
+//Only difference is it will always run at least once, even if the check is false
+do {
+  console.log("inside the DO while loop....", counter);
+  counter++;
+} while (counter <= 10);
