@@ -1,0 +1,39 @@
+body {
+  color: white;
+}
+button {
+  display: block;
+  margin: 15px;
+}
+.green {
+  background-color: rgb(1, 49, 1);
+}
+.blue {
+  background-color: rgb(27, 0, 146);
+  color: black;
+}
+h2 {
+  cursor: pointer;
+}
+
+#first-screen {
+  border: 2px solid white;
+  padding: 20px;
+  margin: 20px;
+}
+#second-screen {
+  border: 2px solid white;
+  padding: 20px;
+  display: none;
+}
+.pet-div {
+  border: 1px solid gray;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 10px;
+}
+.delete-btn {
+  background-color: red;
+  border: none;
+  color: "white";
+}
