@@ -3,11 +3,19 @@
 // const backgroundBtnElement = document.querySelector("#background-btn");
 const backgroundBtnElementWithId = document.getElementById("background-btn");
 const changeBtn = document.querySelector("#change-btn");
+
+//query selector with an id
 const startBtn = document.querySelector("#start-btn");
+//query selector with a class
+const divCardElement = document.querySelector(".some-class-name");
+//query selector with a tag
+const h1Element = document.querySelector("h1");
+
 const goBackBtn = document.querySelector("#go-back-btn");
 const bodyElement = document.querySelector("body");
-const h1Element = document.querySelector("h1");
 const h2Element = document.querySelector("h2");
+
+//getElementById is the most specific way to grab elements
 const firstScreenElement = document.getElementById("first-screen");
 const secondScreenElement = document.getElementById("second-screen");
 const nameInputElement = document.getElementById("name-input");
@@ -52,6 +60,7 @@ backgroundBtnElementWithId.addEventListener("click", () => {
   bodyElement.classList.toggle("blue");
   //you could add the class blue and remove the class yourself, but toggle is better here
 });
+
 h2Element.addEventListener("click", () => {
   console.log("the h2 was clicked! Nice work");
   h1Element.innerText = "Hello Ironhackers!";
@@ -65,10 +74,9 @@ startBtn.addEventListener("click", () => {
   //this is hiding the first screen and showing the second
   firstScreenElement.style.display = "none";
   secondScreenElement.style.display = "block";
+
   //this is grabbing what was typed into the input and storing it in a variable
   const user = nameInputElement.value;
-  //this is logging what was typed to make sure its working
-  console.log("the users name is ....", user);
   //this creates a JS variable the is a created element which is an h2
   const newH2Element = document.createElement("h2");
   //this is setting the innertext of that element to be what we want
