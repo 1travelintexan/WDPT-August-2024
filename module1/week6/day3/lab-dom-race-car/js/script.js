@@ -8,6 +8,7 @@ window.onload = function () {
   restartButton.addEventListener("click", () => {
     window.location.reload();
   });
+
   //this is the event listener for the keyboard arrow keys
   document.addEventListener("keydown", (event) => {
     if (event.code === "ArrowRight") {
@@ -23,6 +24,12 @@ window.onload = function () {
     }
     if (event.code === "ArrowDown") {
       ourGame.player.directionY = 2;
+    }
+    //listener for the space bar to shoot the projectile
+    if (event.code === "Space") {
+      ourGame.projectiles.push(
+        new Projectile(ourGame.player.left + 25, ourGame.player.top - 30)
+      );
     }
   });
 

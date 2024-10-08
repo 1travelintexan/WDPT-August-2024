@@ -9,6 +9,7 @@ class Game {
     this.height = 400;
     this.width = 300;
     this.obstacles = [new Obstacle()];
+    this.projectiles = [];
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
@@ -42,6 +43,28 @@ class Game {
     this.counter++;
     //this updates the player on the DOM based on the directions of the player
     this.player.move();
+
+    //loop through the projectile array and call the .move method on each one
+    for (let i = 0; i < this.projectiles.length; i++) {
+      const currentProjectile = this.projectiles[i];
+      currentProjectile.move();
+      //loop through the obstacles to check for projectile collision
+      for (let j = 0; j < this.obstacles.length; j++) {
+        const currentObstacleInProjectileLoop = this.obstacles[j];
+        const didCollideWithProjectile = currentProjectile.didCollide(
+          currentObstacleInProjectileLoop
+        );
+        if (didCollideWithProjectile) {
+          //removes the image from the screen visually
+          currentProjectile.element.remove();
+          currentObstacleInProjectileLoop.element.remove();
+          //remove the variables from the arrays in JS, not visually
+          this.projectiles.splice(i, 1);
+          this.obstacles.splice(j, 1);
+        }
+      }
+    }
+
     //this will move all of the obstacles
     for (let i = 0; i < this.obstacles.length; i++) {
       const currentObstacle = this.obstacles[i];
