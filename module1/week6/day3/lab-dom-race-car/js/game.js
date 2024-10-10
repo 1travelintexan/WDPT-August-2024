@@ -16,6 +16,8 @@ class Game {
     this.gameIntervalId = null;
     this.gameLoopFrequency = 1000 / 60;
     this.counter = 0;
+    this.horn = new Audio("../sounds/horn.wav");
+    this.shoot = new Audio("../sounds/shoot.wav");
   }
   start() {
     //this sets the height and width of the game screen
@@ -78,6 +80,8 @@ class Game {
         currentObstacle.element.remove();
         this.lives--;
         this.livesElement.innerText = this.lives;
+        //play the horn sound on collision
+        this.horn.play();
       }
 
       //this checks the top of the obstacle and if it is greater than the height of the game screen ...

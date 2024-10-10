@@ -30,6 +30,8 @@ window.onload = function () {
       ourGame.projectiles.push(
         new Projectile(ourGame.player.left + 25, ourGame.player.top - 30)
       );
+      //this will play when the space bar is pushed
+      ourGame.shoot.play();
     }
   });
 
