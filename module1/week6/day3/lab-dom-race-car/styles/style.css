@@ -65,3 +65,6 @@ body button {
   border-radius: 5px;
   margin-bottom: 20px;
 }
+#high-scores li {
+  width: 20%;
+}

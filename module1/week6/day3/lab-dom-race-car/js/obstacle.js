@@ -19,7 +19,7 @@ class Obstacle {
     this.gameScreen.appendChild(this.element);
   }
   move() {
-    this.top += 3;
+    this.top += 5;
     this.updatePosition();
   }
   //this method visually shows us where the player move

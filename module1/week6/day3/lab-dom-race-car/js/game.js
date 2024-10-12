@@ -5,6 +5,7 @@ class Game {
     this.endScreen = document.getElementById("game-end");
     this.scoreElement = document.getElementById("score");
     this.livesElement = document.getElementById("lives");
+    this.highScoresElement = document.querySelector("#high-scores");
     this.player = new Player(110, 300, 60, 120, "../images/car.png");
     this.height = 400;
     this.width = 300;
@@ -38,8 +39,36 @@ class Game {
     //this checks when the game is over and if true then stops the game
     if (this.gameIsOver === true) {
       clearInterval(this.gameIntervalId);
+      //when the game is over, store the score inside the local storage
+      const highScoresFromLS = JSON.parse(localStorage.getItem("highScores"));
+      //the first time you play the game, you need to only set the high score
+      if (!highScoresFromLS) {
+        localStorage.setItem("highScores", JSON.stringify([this.score]));
+      } else {
+        highScoresFromLS.push(this.score);
+        //after you push the score, sort in desc order and slice the first 3
+        //sorting the highscores
+        highScoresFromLS.sort((a, b) => {
+          if (a > b) {
+            return -1;
+          } else if (a < b) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        const topThreeScores = highScoresFromLS.slice(0, 3);
+        localStorage.setItem("highScores", JSON.stringify([...topThreeScores]));
+        //this will update the DOM to show the three scores we stored
+        topThreeScores.forEach((oneScore) => {
+          const newLi = document.createElement("li");
+          newLi.innerText = oneScore;
+          this.highScoresElement.appendChild(newLi);
+        });
+      }
     }
   }
+
   update() {
     //increment the counter so we can add obstacles when it is a certain number
     this.counter++;
@@ -81,7 +110,7 @@ class Game {
         this.lives--;
         this.livesElement.innerText = this.lives;
         //play the horn sound on collision
-        this.horn.play();
+        // this.horn.play();
       }
 
       //this checks the top of the obstacle and if it is greater than the height of the game screen ...
