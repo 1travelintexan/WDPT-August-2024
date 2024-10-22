@@ -1,0 +1,10 @@
+body {
+  background-color: gray;
+}
+.nav {
+  background-color: aqua;
+}
+#my-btn {
+  background-color: aqua;
+  color: black;
+}
