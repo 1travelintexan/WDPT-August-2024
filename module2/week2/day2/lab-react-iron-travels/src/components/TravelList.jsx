@@ -7,7 +7,7 @@ export const TravelList = () => {
   function handleDelete(clickedPlanId) {
     console.log("delete clicked with the id of...", clickedPlanId);
     const filteredPlans = plans.filter((aPlan) => {
-      if (aPlan.id === clickedPlanId) {
+      if (aPlan.id !== clickedPlanId) {
         return true;
       }
     });
