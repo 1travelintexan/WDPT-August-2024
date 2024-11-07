@@ -12,9 +12,13 @@ export const AddPetForm = ({ setUserState, userState }) => {
       setPetOwner(event.target.value);
     }
   }
+  //function that is called when the form is submitted
   function handleAddPet(event) {
+    //you receive the event from the browser as an argument (always)
     //this stops the form from reloading by default
     event.preventDefault();
+    //construct a new pet that is the same structure as the others
+    //the values of the new pet should be the states from above
     const newPet = {
       id: userState.length + 1,
       name: petName,
@@ -22,9 +26,6 @@ export const AddPetForm = ({ setUserState, userState }) => {
       owner: petOwner,
       type: type,
     };
-    console.log("pet was added", newPet, type);
-    //typical solution to add a new Pet
-    // setUserState([...userState, newPet]);
     // Franzi solution
     setUserState((prev) => [...prev, newPet]);
     //standard practice to reset all the states
