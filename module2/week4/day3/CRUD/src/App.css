@@ -1,0 +1,16 @@
+body {
+  background-color: rgb(58, 58, 59);
+  color: aliceblue;
+  text-align: center;
+}
+.post-card {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+a {
+  display: block;
+  color: rgb(40, 105, 210);
+  text-decoration: none;
+}
