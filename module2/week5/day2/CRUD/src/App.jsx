@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import { HomePage } from "./components/HomePage";
 import { ProductListPage } from "./components/ProductListPage";
@@ -9,13 +9,14 @@ import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "./contexts/ThemeContext";
 import Spinner from "react-bootstrap/Spinner";
 import MyOutlet from "./components/MyOutlet";
+import AddImage from "./components/AddImage";
 function App() {
   const [loading, setLoading] = useState(true);
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
 
   if (loading) {
@@ -25,6 +26,7 @@ function App() {
   return (
     <main className={darkTheme ? "dark" : ""}>
       <h1>CRUD Day!</h1>
+      <Link to="/addImage">Add an Image</Link>
       <button onClick={() => setDarkTheme(!darkTheme)}>
         {darkTheme ? "Light Theme" : "Dark Theme"}
       </button>
@@ -45,6 +47,7 @@ function App() {
             </MyOutlet>
           }
         />
+        <Route path="/addImage" element={<AddImage />} />
         <Route path="/posts/details/:postId" element={<ProductDetail />} />
         {/* this is the page to create a new product   */}
         <Route path="/create-post" element={<CreateProductPage />} />
