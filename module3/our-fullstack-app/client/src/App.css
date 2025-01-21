@@ -1,8 +1,9 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+body {
+  padding: 0;
+  margin: 0;
 }
 
 .logo {
@@ -39,4 +40,19 @@
 
 .read-the-docs {
   color: #888;
+}
+
+a {
+  margin: 20px;
+}
+nav {
+  background-color: #4c4b4b;
+  padding: 20px;
+}
+.error {
+  color: red;
+}
+.todo-card {
+  border: 1px solid white;
+  margin: 10px;
 }
