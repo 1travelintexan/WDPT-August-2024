@@ -6,7 +6,7 @@ const authenticateUser = (req, res, next) => {
   ) {
     const theToken = req.headers.authorization.split(" ")[1];
     const data = jwt.verify(theToken, process.env.TOKEN_SECRET);
-    req.pizza = data;
+    req.payload = data;
     next();
   } else {
     res.status(403).json({ message: "headers malformed" });

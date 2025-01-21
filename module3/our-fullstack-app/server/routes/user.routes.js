@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
 
         const authToken = jwt.sign(data, process.env.TOKEN_SECRET, {
           algorithm: "HS256",
-          expiresIn: "1h",
+          expiresIn: "100h",
         });
 
         console.log("Here is the authToken", authToken);
@@ -58,7 +58,8 @@ router.post("/login", async (req, res) => {
 });
 //route to verify the token
 router.get("/verify", authenticateUser, async (req, res) => {
-  console.log("verify route", req.pizza);
-  res.status(200).json({ message: "token is valid", currentUser: req.pizza });
+  console.log("verify route", req.payload);
+
+  res.status(200).json({ message: "token is valid", currentUser: req.payload });
 });
 module.exports = router;
