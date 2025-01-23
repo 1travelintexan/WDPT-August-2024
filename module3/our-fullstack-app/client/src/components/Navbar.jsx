@@ -7,7 +7,10 @@ export const Navbar = () => {
   return (
     <nav>
       {user ? (
-        <button onClick={handleLogout}>Logout</button>
+        <>
+          <button onClick={handleLogout}>Logout</button>
+          <NavLink to="/todos">All Todos</NavLink>
+        </>
       ) : (
         <>
           <NavLink to="/">Signup</NavLink>

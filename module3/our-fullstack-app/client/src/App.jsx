@@ -7,6 +7,8 @@ import NotFound from "./pages/NotFound";
 import { Navbar } from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
 import { AllTodoPage } from "./pages/AllTodoPage";
+import { CreateTodo } from "./pages/CreateTodo";
+import { EditTodo } from "./pages/EditTodo";
 function App() {
   return (
     <>
@@ -28,6 +30,22 @@ function App() {
           element={
             <PrivateRoute>
               <AllTodoPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create-todo"
+          element={
+            <PrivateRoute>
+              <CreateTodo />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/edit-todo/:todoId"
+          element={
+            <PrivateRoute>
+              <EditTodo />
             </PrivateRoute>
           }
         />

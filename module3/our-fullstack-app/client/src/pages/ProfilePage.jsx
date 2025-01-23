@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/auth.context";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
   //testing the context for data
@@ -21,12 +22,34 @@ const ProfilePage = () => {
     getTodos();
   }, [user._id]);
 
+  async function handleDelete(todoId) {
+    console.log("delete clicked", todoId);
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:5005/todo/delete/${todoId}`
+      );
+      console.log("successfully deleted", data);
+      //update the state to reflect the changes
+      const filteredTodos = userTodos.filter((todoInFilter) => {
+        if (todoInFilter._id !== todoId) {
+          return true;
+        }
+      });
+      setUserTodos(filteredTodos);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   // console.log("here is the name from the context", user);
   return (
     <div>
-      <h2>{user.username}'s ProfilePage</h2>
+      <h2>{user.username}s ProfilePage</h2>
+      <Link to="/create-todo">
+        <button>Create Todo</button>
+      </Link>
       {userTodos.length === 0 ? (
-        <p>You don't have any todos</p>
+        <p>You do not have any todos</p>
       ) : (
         userTodos.map((oneTodo) => {
           return (
@@ -34,6 +57,16 @@ const ProfilePage = () => {
               <h5>Title: {oneTodo.title}</h5>
               <h5>Description: {oneTodo.description}</h5>
               <h5>Finished: {oneTodo.completed ? "✅" : "❌"}</h5>
+              <Link to={`/edit-todo/${oneTodo._id}`}>
+                <button>Edit</button>
+              </Link>
+              <button
+                onClick={() => {
+                  handleDelete(oneTodo._id);
+                }}
+              >
+                Delete
+              </button>
             </div>
           );
         })
